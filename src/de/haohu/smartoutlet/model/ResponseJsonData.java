@@ -18,6 +18,9 @@ public class ResponseJsonData implements Serializable {
         return gson.toJson(this);
     }
 
+
+    private ResponseJsonData(){}
+
     private ResponseJsonData(Builder builder){
         this.gson = new Gson();
         this.statusCode = builder.statusCode;
@@ -35,7 +38,7 @@ public class ResponseJsonData implements Serializable {
             return this;
         }
 
-        public Builder message(String message){
+        public Builder  message(String message){
             this.message = message;
             return this;
         }

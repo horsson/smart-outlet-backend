@@ -6,6 +6,9 @@ package de.haohu.smartoutlet.model;
 public class Command {
 
     private String id;
+    private String cmd;
+    private String value;
+
 
     public String getId() {
         return id;
@@ -31,7 +34,5 @@ public class Command {
         this.value = value;
     }
 
-    private String cmd;
 
-    private String value;
 }
