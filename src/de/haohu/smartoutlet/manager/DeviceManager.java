@@ -36,8 +36,8 @@ public class DeviceManager implements Cleanable {
 
 
 
-    public Device getDevice(String clientId){
-        return devices.get(clientId);
+    public Device getDevice(String deviceId){
+        return devices.get(deviceId);
     }
 
     public List<Device> getDevices(){

@@ -1,5 +1,7 @@
 package de.haohu.smartoutlet.devices;
 
+import de.haohu.smartoutlet.model.Command;
+
 import javax.websocket.Session;
 import java.util.Date;
 
@@ -12,6 +14,10 @@ public class Device {
     private Date creationTime;
 
     private transient Session session;
+
+    public void sendCommand(Command command) throws CommandException{
+        //TODO send Command here
+    }
 
     public Session getSession() {
         return session;

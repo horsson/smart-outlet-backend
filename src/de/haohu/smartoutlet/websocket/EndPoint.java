@@ -15,15 +15,15 @@ import java.util.Date;
  * It should be called with following URL:
  * wss://host/endpoint/de0-eadsf-defads-dde
  */
-@ServerEndpoint("/endpoint/{clientId}")
+@ServerEndpoint("/endpoint/{deviceId}")
 public class EndPoint {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EndPoint.class);
 	
     @OnOpen
-    public void onOpen(@PathParam("clientId") String clientId, Session session){
+    public void onOpen(@PathParam("deviceId") String deviceId, Session session){
 
-        LOGGER.debug("CleintId is " + clientId);
+        LOGGER.debug("DeviceId is " + deviceId);
 
         session.addMessageHandler(new MessageHandler.Whole<String>(){
             @Override
@@ -32,9 +32,9 @@ public class EndPoint {
             }
         });
 
-        if (clientId != null){
+        if (deviceId != null){
             Device device = new Device();
-            device.setId(clientId);
+            device.setId(deviceId);
             device.setSession(session);
             device.setCreationTime(new Date());
             DeviceManager.getInstance().addDevice(device);
