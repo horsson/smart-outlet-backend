@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/api/*"})
+//TODO: Before deploying to cloud, please uncomment the command line.
+//@WebFilter(filterName = "AuthenticationFilter", urlPatterns = {"/api/*"})
 public class AuthenticationFilter implements Filter {
     public void destroy() {
 

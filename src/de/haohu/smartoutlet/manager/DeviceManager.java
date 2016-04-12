@@ -65,8 +65,8 @@ public class DeviceManager implements Cleanable {
     class DeviceCheckTask implements Runnable{
         @Override
         public void run() {
+            //FIXME: Add logic code to check if the device is still available
             if (devices.size() == 0){
-                LOGGER.debug("No device, return.");
                 return;
             }
         }

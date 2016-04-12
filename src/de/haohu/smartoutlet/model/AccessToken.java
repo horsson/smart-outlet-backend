@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * Created by d058856 on 29/03/16.
+ * AccessToken is granted to the device as a key to use API.
  */
 public class AccessToken {
 

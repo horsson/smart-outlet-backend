@@ -19,21 +19,18 @@ import java.util.Date;
 public class EndPoint {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EndPoint.class);
+
+    private Device device;
 	
     @OnOpen
     public void onOpen(@PathParam("deviceId") String deviceId, Session session){
 
-        LOGGER.debug("DeviceId is " + deviceId);
-
-        session.addMessageHandler(new MessageHandler.Whole<String>(){
-            @Override
-            public void onMessage(String message) {
-                System.out.println("Received message: "+message);
-            }
-        });
+        LOGGER.debug("DeviceId is {}", deviceId);
+        LOGGER.debug("Session ID is {}", session.getId());
+        LOGGER.debug("The instance of EndPoint is "+ this);
 
         if (deviceId != null){
-            Device device = new Device();
+            device = new Device();
             device.setId(deviceId);
             device.setSession(session);
             device.setCreationTime(new Date());
@@ -43,7 +40,7 @@ public class EndPoint {
 
     @OnClose
     public void onClose(Session session){
-        LOGGER.debug("Session %s is closed.", session.getId());
+        LOGGER.debug("Session {} is closed.", session.getId());
         //Remove the devices from the list.
         DeviceManager.getInstance().removeDeviceBySessionId(session.getId());
     }
@@ -51,12 +48,12 @@ public class EndPoint {
 
     @OnMessage
     public void onMessage(String msg, Session session){
-
+        LOGGER.debug("I got the message, {}", msg);
     }
     
     @OnError
     public void onError(Throwable error, Session session){
-    	LOGGER.error("Error occurs. The reason is "+ error.getMessage());
+    	LOGGER.error("Error occurs. The reason is "+ error.getMessage(), error);
     }
     
     
